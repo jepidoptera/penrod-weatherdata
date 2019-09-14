@@ -4,65 +4,110 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Playground</title>
+        <title>Penrod Weather</title>
         <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
+        <link rel="stylesheet" type="text/css" href="css/custom.css" />
+        <script src="js/formEvents.js"></script>
     </head>
     <body>
-        <div class="slds-grid slds-wrap">
-            <fieldset class="slds-form-element">
-                <legend class="slds-form-element__legend slds-form-element__label">Select a city</legend>
+        <div class="slds-grid slds-grid_align-center">
+        <!-- city chooser form -->
+        <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+        <fieldset class="slds-form-element">
+            <legend class="slds-form-element__legend slds-form-element__label slds-m-around_large">Select a city</legend>
 
-                <!-- visual picker element -->
-                <div class="slds-form-element__control">
-                    <div class="slds-visual-picker slds-visual-picker_medium">
-                        <input type="radio" id="visual-picker-78" value="visual-picker-78" name="options" />
-                        <label for="visual-picker-78">
-                            <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
-                                <span class="slds-is-selected">
-                                    <span class="slds-icon_container">
-                                    <svg class="slds-icon slds-icon_large slds-icon-action-check" aria-hidden="true">
-                                        <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
-                                    </svg>
-                                    </span>
-                                </span>
-                                <span class="slds-is-not-selected">
-                                    <span class="slds-icon_container">
-                                    <img class="slds-icon-action-check" src="/assets/images/cities/minneapolis.png" alt="">
-
-                                    </span>
-                                </span>
-                            </span>
-                            <span class="slds-visual-picker__body">
-                            <span class="slds-text-title">Connected App</span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="slds-visual-picker slds-visual-picker_medium">
-                        <input type="radio" id="visual-picker-79" value="visual-picker-79" name="options" />
-                        <label for="visual-picker-79">
-                            <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+            <!-- visual picker element -->
+            <form class="slds-form-element__control slds-m-around_large" name="city_select">
+                <div class="slds-visual-picker slds-visual-picker_medium slds-col">
+                    <input type="radio" id="visual-picker-00" onchange="selectCity('chicago')"/>
+                    <label for="visual-picker-00">
+                        <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
                             <span class="slds-is-selected">
-                                <span class="slds-icon_container">
-                                <svg class="slds-icon slds-icon_large slds-icon-action-check" aria-hidden="true">
-                                    <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                                </span>
+                                <img class="custom-button-icon custom-button-icon-selected" src="/assets/images/cities/chicago.png" alt="chicago">
                             </span>
                             <span class="slds-is-not-selected">
-                                <span class="slds-icon_container">
-                                <svg class="slds-icon slds-icon-utility-custom_apps slds-icon_large slds-icon-text-default" aria-hidden="true">
-                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#custom_apps"></use>
-                                </svg>
-                                </span>
+                                <img class="custom-button-icon" src="/assets/images/cities/chicago.png" alt="chicago">
                             </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            <span class="slds-text-title">Chicago</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="slds-visual-picker slds-visual-picker_medium slds-col">
+                    <input type="radio" id="visual-picker-01" onchange="selectCity('minneapolis')"/>
+                    <label for="visual-picker-01">
+                        <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+                            <span class="slds-is-selected">
+                                <img class="custom-button-icon custom-button-icon-selected" src="/assets/images/cities/minneapolis.png"
+                                    alt="minneapolis">
                             </span>
-                            <span class="slds-visual-picker__body">
-                            <span class="slds-text-title">Custom App</span>
+                            <span class="slds-is-not-selected">
+                                <img class="custom-button-icon" src="/assets/images/cities/minneapolis.png" alt="minneapolis">
                             </span>
-                        </label>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            <span class="slds-text-title">Minneapolis</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="slds-visual-picker slds-visual-picker_medium slds-col">
+                    <input type="radio" id="visual-picker-02" onchange="selectCity('milwalkee')"/>
+                    <label for="visual-picker-02">
+                        <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+                            <span class="slds-is-selected">
+                                <img class="custom-button-icon custom-button-icon-selected" src="/assets/images/cities/milwalkee.png"
+                                    alt="milwalkee">
+                            </span>
+                            <span class="slds-is-not-selected">
+                                <img class="custom-button-icon" src="/assets/images/cities/milwalkee.png" alt="milwalkee">
+                            </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            <span class="slds-text-title">Milwalkee</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="slds-visual-picker slds-visual-picker_medium slds-col">
+                    <input type="radio" id="visual-picker-03" onchange="selectCity('dallas')"/>
+                    <label for="visual-picker-03">
+                        <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+                            <span class="slds-is-selected">
+                                <img class="custom-button-icon custom-button-icon-selected" src="/assets/images/cities/dallas.png"
+                                    alt="dallas">
+                            </span>
+                            <span class="slds-is-not-selected">
+                                <img class="custom-button-icon" src="/assets/images/cities/dallas.png" alt="dallas">
+                            </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            <span class="slds-text-title">Dallas</span>
+                        </span>
+                    </label>
+                </div>
+            </form>
+        </fieldset></div>
+
+        <!-- weather data display area 
+            slides in when a city is chosen -->
+            <div id="weather_display">
+                <div class="slds-grid slds-grid_vertical-align-center" style="height:100%">
+                    <!-- back button -->
+                    <button class="slds-button slds-button_icon slds-m-around_large slds-button_icon-brand" 
+                    title="Back" onclick="backToCitiesScreen()">
+                        <svg class="slds-button__icon" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Search</span>
+                    </button>
+                    <!-- data display area -->
+                    <div class="slds-col slds-size_11-of-12">
+                        <div class="slds-align_absolute-center">
+                            <h1>weather data!</h1>
+                        </div>
                     </div>
                 </div>
-            </fieldset>
+            </div>
         </div>
     </body>
 </html>
