@@ -1,10 +1,11 @@
 const axios = require('axios');
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 var port = process.env.PORT || 8080;
 // load API key from .env file
-const apiKey = process.env.apiKey || "no_api_key";
+const apiKey = process.env.APIKEY || "no_api_key";
 
 console.log(apiKey);
 
@@ -16,17 +17,14 @@ console.log('Listening on: http://localhost:' + port);
 
 app.get('/weather/:city', (req, res) => {
     // load data for selected city
-    axios.get("api.openweathermap.org/data/2.5/weather", {
-        params: {
-          q: req.params.city,
-          appid: apiKey
-        }
-      })
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${req.params.city}&appid=${apiKey}`)
+    // axios.get('https://gogobackend.azurewebsites.net/api/games/all')
     .then(function (response) {
         // handle success
         console.log(response);
         // render loading page
-        res.render("weather.html");      
+        // res.render("weather");      
+        res.send(response.data)
     })
     .catch(function (error) {
         // handle error

@@ -9,6 +9,8 @@ function selectCity(cityName) {
     }, 300);
 }
 
+window.addEventListener('load', backToCitiesScreen);
+
 function backToCitiesScreen() {
     // unselect city
     Object.keys(document.forms['city_select']).forEach(element => document.forms['city_select'][element].checked = false)
