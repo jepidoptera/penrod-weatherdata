@@ -9,9 +9,12 @@
 </head>
 <body style="text-align: center">
     <div class="slds-grid slds-grid_align-center">
-    <!-- city chooser form -->
     <div class="slds-col slds-size_1-of-1">
-    <h1>Penrod Salesforce Consulting has offices in four American cities.</h1>
+    <h1>
+        Penrod Salesforce Consulting has offices in four American cities.  Naturally, your first question is: what's the weather like?
+    </h1>
+
+    <!-- city chooser form -->
     <fieldset class="slds-form-element">
         <legend class="slds-form-element__label slds-align_absolute-center" style="font-size: 16pt">
             Select a city to view local weather conditions
@@ -19,7 +22,7 @@
 
         <form class="slds-form-element__control slds-m-around_large" name="city_select">
             {{#each cities}}
-                <!-- visual picker element -->
+                <!-- visual picker element, one for each city -->
                 <div class="slds-visual-picker slds-visual-picker_medium">
                     <input type="radio" id="visual-picker-{{@index}}" onchange="selectCity('{{name}}', {{id}})"/>
                     <label for="visual-picker-{{@index}}">
