@@ -7,7 +7,13 @@ const port = process.env.PORT || 8080;
 // load API key from .env file
 const apiKey = process.env.APIKEY || "no_api_key";
 
-console.log(apiKey);
+
+const cities = [
+    {name: "Chicago", id: 4887398, next: 5037649}, 
+    {name: "Minneapolis", id: 5037649, next: 5263045}, 
+    {name: "Milwaukee", id: 5263045, next: 4684888}, 
+    {name: "Dallas", id: 4684888, next: 4887398}
+]
 
 // Serve static files
 app.use(express.static(__dirname + '/public'));
@@ -34,12 +40,6 @@ console.log('Listening on: http://localhost:' + port);
 
 app.get('/', (req, res) => {
     // home page
-    let cities = [
-        {name: "Chicago", id: 4887398}, 
-        {name: "Minneapolis", id: 5037649}, 
-        {name: "Milwaukee", id: 5263045}, 
-        {name: "Dallas", id: 4684888}
-    ]
     console.log('rendering city select page...');
     res.render("index", {cities: cities});
 })
@@ -50,8 +50,8 @@ app.get('/weather/:cityId', (req, res) => {
         ? `http://api.openweathermap.org/data/2.5/weather?id=${req.params.cityId}&appid=${apiKey}`
         // or, in case you manually enter a city name into the url...
         : `http://api.openweathermap.org/data/2.5/weather?q=${req.params.cityId}&appid=${apiKey}`
+    
     axios.get(urlString)
-    // axios.get('https://gogobackend.azurewebsites.net/api/games/all')
     .then(function (response) {
         // success
         // parsing out data for the template
@@ -65,8 +65,9 @@ app.get('/weather/:cityId', (req, res) => {
             humidity: response.data.main.humidity,
             sunrise: response.data.sys.sunrise,
             sunset: response.data.sys.sunset,
-            timezone: response.data.timezone
+            timezone: response.data.timezone,
         }
+        
         // see what we've got...
         console.log(weatherData);
         // render weather page
@@ -81,17 +82,6 @@ app.get('/weather/:cityId', (req, res) => {
         console.log(error);
         // TODO: error page?
     })
-  
-    // ajax.on('success', function (event) {
-    //     // what did we get back?
-    //     console.log('success', event);
-    //     // TODO: load new page
-    //     res.end();
-    // });
-
-    // // send request
-    // ajax.send();
-
 })
 
 app.listen(port);
