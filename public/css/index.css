@@ -1,7 +1,18 @@
+body, html {
+    background-color: #69C6B3;
+}
+
 .custom-button-img {
     box-sizing: border-box;
-    width: 80%;
-    padding: 5px;
+    height: 320px;
+    width: 256px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.custom-button-img:hover {
+    padding: 0;
+    border: 2px solid blue;
 }
 
 #loading_overlay {

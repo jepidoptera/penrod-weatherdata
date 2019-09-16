@@ -10,9 +10,6 @@
 <body style="text-align: center">
     <div class="slds-grid slds-grid_align-center">
     <div class="slds-col slds-size_1-of-1">
-    <h1>
-        Penrod Salesforce Consulting has offices in four American cities.  Naturally, your first question is: what's the weather like?
-    </h1>
 
     <!-- city chooser form -->
     <fieldset class="slds-form-element">
@@ -23,20 +20,23 @@
         <form class="slds-form-element__control slds-m-around_large" name="city_select">
             {{#each cities}}
                 <!-- visual picker element, one for each city -->
-                <div class="slds-visual-picker slds-visual-picker_medium">
+                <div class="slds-visual-picker slds-visual-picker_medium slds-m-around_large">
                     <input type="radio" id="visual-picker-{{@index}}" onchange="selectCity('{{name}}', {{id}})"/>
                     <label for="visual-picker-{{@index}}">
-                        <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
-                            <img class="custom-button-img" src="/assets/images/cities/{{name}}.png" alt="{{name}}">
-                        </span>
-                        <span class="slds-visual-picker__body">
+                        <img class="custom-button-img" src="/assets/images/cities/{{name}}.png" alt="{{name}}">
+                        <span class="slds-visual-picker__body slds-m-around_large">
                             <span class="slds-text-title">{{name}}</span>
                         </span>
                     </label>
                 </div>
             {{/each}}
         </form>
-    </fieldset></div>
+    </fieldset>
+    </div>
+    
+    <h1>
+        Penrod Salesforce Consulting has offices in four American cities.  Naturally, your first question is: what's the weather like?
+    </h1>
 
     <!--loading icon overlay 
         appears when a city is chosen -->
