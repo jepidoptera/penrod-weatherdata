@@ -9,11 +9,9 @@ function selectCity(cityName, id) {
     }, 300);
 }
 
-window.addEventListener('load', backToCitiesScreen);
-
-function backToCitiesScreen() {
+window.addEventListener('load', () => {
     // unselect city
     Object.keys(document.forms['city_select']).forEach(element => document.forms['city_select'][element].checked = false)
     // go back to city selection view
     document.getElementById("loading_overlay").classList.remove("visible");
-}
+})
