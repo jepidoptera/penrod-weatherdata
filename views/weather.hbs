@@ -1,0 +1,60 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
+    <link rel="stylesheet" type="text/css" href="/css/weather.css" />
+    <title>Weather in {{city}}</title>
+</head>
+<body>
+    <h1>{{city}}, {{country}}</h1>
+    <div class="slds-grid slds-grid_align-center">
+    <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_5-of-12">
+    <div class="slds-box slds-align_absolute-center">
+    <div style="display: inline-block;">
+        {{Capitalize description}} in {{city}} right now. <br>
+        <br> <div style="font-size: 14pt; margin: 10px">
+            Temperature: <span id="degreesF"></span>° Fahrenheit <br>
+            Humidity: {{humidity}}% <br>
+            Barometric pressure: {{pressure}} millibars <br>
+        <br> </div>
+        <span id="localTime"></span> <br>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+<script>
+    window.addEventListener('load', () => {
+        // convert from Kelvin to Fahrenheit
+        document.getElementById("degreesF").textContent = Math.round({{temperature}} * 9 / 5 - 459.67);
+        // count down til sunset or whatever
+        displayTime();
+        setInterval(displayTime, 10000)
+    })
+    // display correct information about the time and what the sun is doing.
+    function displayTime() {
+        let now = Math.floor(Date.now() / 1000);
+        let sunRiseHappened = now > {{sunrise}};
+        let sunSetHappened = now > {{sunset}};
+        let hours = Math.floor(((now + {{timezone}}) % 86400) / 3600);
+        let am_pm = hours > 12 ? "PM" : "AM";
+        hours %= 12;
+        let minutes = Math.floor(((now + {{timezone}}) % 3600) / 60);
+        let message = `Local time is ${hours}:${minutes} ${am_pm}. <br>`;
+        if (!sunRiseHappened) {
+            let hours = Math.floor(({{sunrise}} - now) / 3600);
+            let minutes = Math.floor((({{sunrise}} - now) % 3600) / 60);
+            message += `Sunrise in ${hours} ${hours > 0 ? (hours > 1 ? "hours" : "hour") : ""} and ${minutes} minutes.`
+        }
+        else if (!sunSetHappened) {
+            let hours = Math.floor(({{sunset}} - now) / 3600);
+            let minutes = Math.floor((({{sunset}} - now) % 3600) / 60);
+            message += `Sunset in ${hours} ${hours > 0 ? (hours > 1 ? "hours" : "hour") : ""} and ${minutes} minutes.`
+        }
+        else {
+            let hours = Math.floor((now - {{sunset}}) / 3600);
+            let minutes = Math.floor(((now - {{sunset}}) % 3600) / 60);
+            message += `The sun set ${hours} ${hours > 0 ? (hours > 1 ? "hours" : "hour") : ""} and ${minutes} minutes ago.`
+        }
+        document.getElementById("localTime").innerHTML = message;
+    }
+</script>
