@@ -6,13 +6,17 @@ body, html {
     box-sizing: border-box;
     height: 320px;
     width: 256px;
-    padding: 2px;
-    border-radius: 5px;
+    /* padding: 2px; */
+    border-radius: 7px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px 2px #000;
 }
 
 .custom-button-img:hover {
     padding: 0;
-    border: 2px solid blue;
+    /* border: 2px solid white; */
+    box-shadow: 0 0 7px 10px #ccc;
+    border: 1px solid white;
 }
 
 #loading_overlay {
@@ -30,4 +34,9 @@ body, html {
     background-color: white;
     opacity: 0.5;
     z-index: 2;
+}
+
+.main_title {
+    position: relative;
+    top: 20px;
 }

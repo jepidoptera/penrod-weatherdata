@@ -1,4 +1,5 @@
-body {
+body, html {
+    background-color: #69C6B3;
     font-size: 16pt;
 }
 

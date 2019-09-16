@@ -6,11 +6,11 @@
 </head>
 <body>
     <div class="slds-grid slds-grid_align-center">
-    <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_5-of-12">
+    <div class="slds-col slds-size_11-of-12 slds-medium-size_2-of-3 slds-large-size_5-of-12">
 
         {{!-- back button --}} 
         <div style="float: left">
-        <button class="slds-button slds-m-around_medium" title="Back"
+        <button class="slds-button slds-m-around_small" title="Back"
             onclick="window.location.href='/'">
             <span class="slds-icon_container slds-icon-utility-back slds-m-right_medium" title="Back to browse page">
                 <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
@@ -24,7 +24,7 @@
 
 
         <div style="float: right">
-        <button class="slds-button slds-m-around_medium" title="Back"
+        <button class="slds-button slds-m-around_small" title="Back"
             onclick="window.location.href='/'">
             Next
             <span class="slds-icon_container slds-icon-utility-back slds-m-left_medium" title="Back to browse page">
@@ -44,8 +44,8 @@
 
 
         {{!-- info box --}}
-        <div class="slds-box slds-align_absolute-center">
-        <div style="display: inline-block;">
+        <div class="slds-box slds-align_absolute-center" style="width: 100%;">
+        <div style="display: inline-block">
             {{Capitalize description}} in {{city}} right now. <br>
             <br> <div style="font-size: 14pt; margin: 10px">
                 Temperature: <span id="degreesF"></span>° Fahrenheit <br>
