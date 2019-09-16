@@ -46,8 +46,8 @@
         {{!-- info box --}}
         <div class="slds-box slds-align_absolute-center" style="width: 100%;">
         <div style="display: inline-block">
-            {{Capitalize description}} in {{city}} right now. <br>
-            <br> <div style="font-size: 14pt; margin: 10px">
+            {{Capitalize description}} in {{city}} right now. <hr>
+            <div style="font-size: 14pt; margin: 10px">
                 Temperature: <span id="degreesF"></span>° Fahrenheit <br>
                 Humidity: {{humidity}}% <br>
                 Barometric pressure: {{pressure}} millibars <br>
@@ -79,17 +79,17 @@
         if (!sunRiseHappened) {
             let hours = Math.floor(({{sunrise}} - now) / 3600);
             let minutes = Math.floor((({{sunrise}} - now) % 3600) / 60);
-            message += `Sunrise in ${hours} ${hours > 0 ? (hours > 1 ? "hours" : "hour") : ""} and ${minutes} minutes.`
+            message += `Sunrise in ${hours > 0 ? (hours > 1 ? `${hours} hours` : "one hour") + " and " : ""}${minutes} minutes.`
         }
         else if (!sunSetHappened) {
             let hours = Math.floor(({{sunset}} - now) / 3600);
             let minutes = Math.floor((({{sunset}} - now) % 3600) / 60);
-            message += `Sunset in ${hours} ${hours > 0 ? (hours > 1 ? "hours" : "hour") : ""} and ${minutes} minutes.`
+            message += `Sunset in ${hours > 0 ? (hours > 1 ? `${hours} hours` : "one hour") + " and " : ""}${minutes} minutes.`
         }
         else {
             let hours = Math.floor((now - {{sunset}}) / 3600);
             let minutes = Math.floor(((now - {{sunset}}) % 3600) / 60);
-            message += `The sun set ${hours} ${hours > 0 ? (hours > 1 ? "hours" : "hour") : ""} and ${minutes} minutes ago.`
+            message += `The sun set ${hours > 0 ? (hours > 1 ? `${hours} hours` : "one hour") + " and " : ""}${minutes} minutes ago.`
         }
         document.getElementById("localTime").innerHTML = message;
     }
