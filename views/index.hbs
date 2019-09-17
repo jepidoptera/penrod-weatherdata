@@ -5,7 +5,7 @@
     <title>Weather @ Penrod</title>
     <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
     <link rel="stylesheet" type="text/css" href="/css/index.css" />
-    <script src="js/formEvents.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" />
 </head>
 <body style="text-align: center">
     <div class="slds-grid slds-grid_align-center">
@@ -51,3 +51,14 @@
         </div>
     </div>
 </body>
+
+<script>
+    function selectCity(cityName, id) {
+        // show loading animation
+        document.getElementById("loading_overlay").classList.add("visible");
+        // load new page after animation finishes
+        setTimeout(() => {
+            window.location.href = `/weather/${id}`;
+        }, 300);
+    }
+</script>
