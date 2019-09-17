@@ -1,6 +1,7 @@
 const axios = require('axios');
 const express = require('express');
 const app = express();
+const allCities = require('./city.list')
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
@@ -67,13 +68,22 @@ app.get('/weather/:cityId', (req, res) => {
             sunset: response.data.sys.sunset,
             timezone: response.data.timezone,
         }
-        
+        // which city should come next?
+        cities.forEach(city => {
+            if (city.name === response.data.name) {
+                weatherData.nextCity = city.next;
+            }
+        })
+        // if we are not observing one of the four from the menu, choose one at random from around the world
+        if (!weatherData.nextCity) {
+            weatherData.nextCity = allCities[Math.floor(Math.random() * allCities.length)].id;
+        }
         // see what we've got...
         console.log(weatherData);
         // render weather page
         // but wait a sec so we can look at the loading icon
         // setTimeout(() => {
-            res.render("weather", weatherData);      
+        res.render("weather", weatherData);      
         // }, 1000);
         // res.send(response.data)
     })
