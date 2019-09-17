@@ -17,15 +17,15 @@
                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use>
                 </svg>
             </span>
-        Back.
+            Back
             <span class="slds-assistive-text">Back to Menu</span>
         </button>
         </div>
 
-
+        {{!-- next button --}}
         <div style="float: right">
         <button class="slds-button slds-m-around_small" title="Back"
-            onclick="window.location.href='/'">
+            onclick="window.location.href='/weather/{{nextCity}}'">
             Next
             <span class="slds-icon_container slds-icon-utility-back slds-m-left_medium" title="Back to browse page">
                 <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
@@ -77,11 +77,13 @@
         let minutes = Math.floor(((now + {{timezone}}) % 3600) / 60);
         let message = `Local time is ${hours}:${minutes} ${am_pm}. <br>`;
         if (!sunRiseHappened) {
+            // countdown til sunrise
             let hours = Math.floor(({{sunrise}} - now) / 3600);
             let minutes = Math.floor((({{sunrise}} - now) % 3600) / 60);
             message += `Sunrise in ${hours > 0 ? (hours > 1 ? `${hours} hours` : "one hour") + " and " : ""}${minutes} minutes.`
         }
         else if (!sunSetHappened) {
+            // countdown til sunset
             let hours = Math.floor(({{sunset}} - now) / 3600);
             let minutes = Math.floor((({{sunset}} - now) % 3600) / 60);
             message += `Sunset in ${hours > 0 ? (hours > 1 ? `${hours} hours` : "one hour") + " and " : ""}${minutes} minutes.`
