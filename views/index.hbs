@@ -9,36 +9,32 @@
 </head>
 <body style="text-align: center">
     <div class="slds-grid slds-grid_align-center">
-    <div class="slds-col slds-size_1-of-1">
+        <div class="slds-col slds-size_1-of-1">
 
-    <!-- city chooser form -->
-    <fieldset class="slds-form-element">
-        <legend class="slds-form-element__label slds-align_absolute-center main_title" style="font-size: 16pt">
-            Select a city to view local weather conditions
-        </legend>
+        <!-- city chooser form -->
+        <fieldset class="slds-form-element">
+            <legend class="slds-form-element__label slds-align_absolute-center main_title" style="font-size: 16pt">
+                Select a city to view local weather conditions
+            </legend>
 
-        <form class="slds-form-element__control slds-m-around_large" name="city_select">
-            {{#each cities}}
-                <!-- visual picker element, one for each city -->
-                <div class="slds-visual-picker slds-visual-picker_medium slds-m-around_large">
-                    <input type="radio" id="visual-picker-{{@index}}" onchange="selectCity('{{name}}', {{id}})"/>
-                    <label for="visual-picker-{{@index}}">
-                        <img class="custom-button-img" src="/assets/images/cities/{{name}}.png" alt="{{name}}">
-                        <span class="slds-visual-picker__body" style="width: 100%;">
-                            <span class="slds-text-title" style="font-size: 14pt; text-align: center">
-                                {{name}}
+            <form class="slds-form-element__control slds-m-around_large" name="city_select">
+                {{#each cities}}
+                    <!-- visual picker element, one for each city -->
+                    <div class="slds-visual-picker slds-visual-picker_medium slds-m-around_large">
+                        <input type="radio" id="visual-picker-{{@index}}" onchange="selectCity('{{name}}', {{id}})"/>
+                        <label for="visual-picker-{{@index}}">
+                            <img class="custom-button-img" src="/assets/images/cities/{{name}}.png" alt="{{name}}">
+                            <span class="slds-visual-picker__body" style="width: 100%;">
+                                <span class="slds-text-title" style="font-size: 14pt; text-align: center">
+                                    {{name}}
+                                </span>
                             </span>
-                        </span>
-                    </label>
-                </div>
-            {{/each}}
-        </form>
-    </fieldset>
-        <br>
-        <h1>
-            Penrod Salesforce Consulting has offices in four American cities.  Naturally, your first question is: what's the weather like?
-        </h1>
-    </div>
+                        </label>
+                    </div>
+                {{/each}}
+            </form>
+        </fieldset>
+        </div>
 
     <!--loading icon overlay 
         appears when a city is chosen -->

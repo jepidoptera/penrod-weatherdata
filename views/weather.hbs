@@ -36,12 +36,10 @@
         </button>
         </div>
 
-
         {{!-- title --}}
         <h1>
             {{city}}, {{country}}
         </h1>
-
 
         {{!-- info box --}}
         <div class="slds-box slds-align_absolute-center" style="width: 100%;">
@@ -52,12 +50,14 @@
                 Humidity: {{humidity}}% <br>
                 Barometric pressure: {{pressure}} millibars <br>
             <br> </div>
+            {{!-- script will fill this in --}}
             <span id="localTime"></span> <br>
         </div>
         </div>
     </div>
     </div>
 </body>
+
 <script>
     window.addEventListener('load', () => {
         // convert from Kelvin to Fahrenheit
