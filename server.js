@@ -5,9 +5,7 @@ const allCities = require('./city.list')
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
-// load API key from .env file
 const apiKey = process.env.APIKEY || "no_api_key";
-
 
 const cities = [
     {name: "Chicago", id: 4887398, next: 5037649}, 
@@ -21,12 +19,11 @@ app.use(express.static(__dirname + '/public'));
 
 // use handlebars
 var exphbs = require("express-handlebars");
-
-// capitalize words on demand
 app.engine(".hbs", exphbs({
     defaultLayout: "main",
     extname: ".hbs",
     helpers: {
+    // capitalize words on request
         'Capitalize': function(string)
         {
             return string.charAt(0).toUpperCase() + string.slice(1);
@@ -81,16 +78,10 @@ app.get('/weather/:cityId', (req, res) => {
         // see what we've got...
         console.log(weatherData);
         // render weather page
-        // but wait a sec so we can look at the loading icon
-        // setTimeout(() => {
         res.render("weather", weatherData);      
-        // }, 1000);
-        // res.send(response.data)
     })
     .catch(function (error) {
-        // handle error
         console.log(error);
-        // TODO: error page?
     })
 })
 

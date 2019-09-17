@@ -65,6 +65,8 @@
         // count down til sunset or whatever
         displayTime();
         setInterval(displayTime, 10000)
+        // occasionally refresh to keep the weather data current
+        setInterval(() => {window.location.href = window.location.href}, 600000)
     })
     // display correct information about the time and what the sun is doing.
     function displayTime() {
